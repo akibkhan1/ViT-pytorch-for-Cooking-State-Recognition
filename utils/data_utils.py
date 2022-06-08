@@ -24,9 +24,9 @@ def get_loader(args):
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
         transforms.RandomHorizontalFlip(p=0.5),
-        transforms.RandomAffine(degrees=20, translate=(0.1,0.3), scale=(0.05, 0.75)),
-        transforms.RandomRotation(50), 
-        transforms.RandomChoice([transforms.RandomAdjustSharpness(sharpness_factor=2),transforms.RandomAutocontrast(),transforms.ColorJitter(brightness=0.5, hue=0.3),transforms.GaussianBlur(kernel_size=(3, 3), sigma=(0.1, 5))])
+        transforms.RandomChoice(transforms.RandomAffine(degrees=20, translate=(0.1,0.3), scale=(0.05, 0.75)),transforms.RandomRotation(50)),
+        transforms.RandomAdjustSharpness(sharpness_factor=2),
+        transforms.RandomChoice([transforms.RandomAutocontrast(),transforms.ColorJitter(brightness=0.5, hue=0.3)])
     ])
 
     transform_test = transforms.Compose([
