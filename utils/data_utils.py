@@ -43,14 +43,14 @@ def get_loader(args):
 
     else:
         if args.augmentation == True:
-            trainset = datasets.ImageFolder(root="./data/augmented_dataset_v1/train",
+            trainset = datasets.ImageFolder(root="./weather_dataset/train",
                                      transform=transform_train_aug)
         else :
-            trainset = datasets.ImageFolder(root="./data/augmented_dataset_v1/train",
+            trainset = datasets.ImageFolder(root="./weather_dataset/train",
                                      transform=transform_train)
-        validset = datasets.ImageFolder(root="./data/augmented_dataset_v1/valid",
+        validset = datasets.ImageFolder(root="./weather_dataset/valid",
                                     transform=transform_test) if args.local_rank in [-1, 0] else None
-        testset = datasets.ImageFolder(root="./data/augmented_dataset_v1/test",
+        testset = datasets.ImageFolder(root="./weather_dataset/test",
                                     transform=transform_test) if args.local_rank in [-1, 0] else None
     if args.local_rank == 0:
         torch.distributed.barrier()
