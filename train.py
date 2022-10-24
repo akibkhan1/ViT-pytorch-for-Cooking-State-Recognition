@@ -62,7 +62,7 @@ def setup(args):
     # Prepare model
     config = CONFIGS[args.model_type]
 
-    num_classes = 10 if args.dataset == "cifar10" else 7
+    num_classes = 10 if args.dataset == "cifar10" else 11
 
     model = VisionTransformer(config, args.img_size, zero_head=True, num_classes=num_classes)
     if args.pretrained_dir != "no_weights":
